@@ -1,18 +1,29 @@
 <?php
-require_once "checkForm.php";
 require_once "authorization.php";
 require_once "dealsWork.php";
 require_once "doublesWork.php";
 
-if (isFormOK()) {
-    $result = ConnectToAMO();
-    If ($result !== false) {
-        $dealArr = getDeals();
-        if (count($dealArr) !== 0) {
-            checkDoublesAndSetTasks();
+foreach ($_REQUEST as $key => $val) {
+    $userInform[$key] = $val;
+}
+
+if ($userInform) {
+    If (ConnectToAMO()) {
+        if (! isDoubles($userInform)) {
+            addDeal($userInform);
         }
-        addDeal();
-    } else {
-        logDataAndProblems();
     }
-} else returnToForm();
+
+    $header="
+        <html>
+        <head>
+        <title>from script</title>
+        <meta content=\'text/html; charset=UTF-8\' http-equiv=Content-Type>
+        </head>
+        <body>
+    ";
+
+    echo $header;
+    echo "<div id='OK_msg'><h1> Спасибо! Мы обязательно с Вами свяжемся!!!</h1>";
+    echo "<input type=button value='Вернуться назад' OnClick='history.back()'> </div>";
+}

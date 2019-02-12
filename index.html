@@ -11,15 +11,23 @@
 
         <form id="login_form" action="main.php" method="post">
 
-            <label for="login">Введите свой login:</label>
-            <input id="login" type="text" name="username" >
-            <span id="warn_msg"></span><br>
+            <label for="name">ФИО:</label><br>
+            <input id="name" required type="text" name="clientName" >
+            <br><span id="name_warn_msg" class="warn_msg"></span><br>
 
-            <label for="pswd" class="icon-lock">Введите свой пароль:</label>
-            <input id="pswd" class="showpassword" type="password" name="password">
-            <br>
+            <label for="phone" class="icon-lock">Телефон:</label><br>
+            <input id="phone" required type="tel" name="clientPhone">
+            <br><span id="phone_warn_msg" class="warn_msg"></span><br>
 
-            <input type="submit" value="Войти">
+            <label for="email" class="icon-lock">E-mail:</label><br>
+            <input id="email" required  type="email" name="clientEmail">
+            <br><span id="email_warn_msg" class="warn_msg"></span><br>
+
+            <label for="branch" class="icon-lock">Отрасль:</label><br>
+            <input id="branch" type="text" name="clientBranch"><br>
+
+
+            <input type="submit" value="Отправить запрос">
 
         </form>
 

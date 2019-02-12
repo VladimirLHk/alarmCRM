@@ -4,31 +4,6 @@
   padding: 0;
 }
 
-.HeadLine {
-    line-height: 40px;
-    font-family: 'Arial', sans-serif;
-    font-size: 22px;
-    font-weight: normal;
-    color: #1526e4;
-}
-
-label {
-    font-weight: bold;
-}
-
-#firstResult,
-#secondResult {
-    color: #830d13;
-}
-
-td {
-    text-align: center;
-}
-
-#secondDay,
-#secondMon {
-    width: 35px;
-}
 
 .login-form,
 .login-form input,
@@ -44,13 +19,12 @@ td {
 }
 
 
-
 .login-form {
     position: relative;
     width: 300px;
-    height: 180px;
+    height: 350px;
     padding: 15px 25px 0 25px;
-    margin-top: 15px;
+    margin: auto;
     cursor: default;
     border: solid;
 
@@ -61,7 +35,8 @@ td {
 
 
 .login-form input[type=text],
-.login-form input[type=password],
+.login-form input[type=tel],
+.login-form input[type=email],
 .login-form input[type=submit] {
     line-height: 14px;
     margin: 10px 0;
@@ -86,7 +61,8 @@ td {
 }
 
 .login-form input[type=text],
-.login-form input[type=password] {
+.login-form input[type=tel],
+.login-form input[type=email] {
     color: #686868;
     width: 170px;
 
@@ -104,14 +80,16 @@ td {
 }
 
 .login-form input[type=text]:hover,
-.login-form input[type=password]:hover {
+.login-form input[type=tel]:hover,
+.login-form input[type=email]:hover {
     -webkit-box-shadow: inset 1px 1px 1px 0px rgba(255,255,255, .6), 0px 0px 5px rgba(255,255,255, .5);
     -moz-box-shadow: inset 1px 1px 1px 0px rgba(255,255,255, .6), 0px 0px 5px rgba(255,255,255, .5);
     box-shadow: inset 1px 1px 1px 0px rgba(255,255,255, .6), 0px 0px 5px rgba(255,255,255, .5);
 }
 
 .login-form input[type=text]:focus,
-.login-form input[type=password]:focus {
+.login-form input[type=tel]:focus,
+.login-form input[type=email]:focus{
     background: #e1e1e1;
     background: -moz-linear-gradient(top,  #ffffff 0%, #e1e1e1 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e1e1e1));
@@ -142,8 +120,14 @@ td {
     background: linear-gradient(top,  #a5cd4e 0%,#6b8f1a 100%);
 }
 
-#warn_msg {
+.warn_msg {
     font-size: 9px;
     font-weight: bolder;
     color: red;
+}
+
+#OK_msg {
+    position: relative;
+    width: 700px;
+    margin: auto;
 }

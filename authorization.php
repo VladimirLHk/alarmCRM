@@ -1,46 +1,10 @@
 <?php
+require_once "cfg.php";
+
 function ConnectToAMO() {
-    /*
-        $post_data = http_build_query(
-            array(
-                'USER_LOGIN'=>'vladimirkh.it@gmail.com',
-                'USER_HASH'=>'e6598fa2f194c9ce76519b9b94893f91f2816489',
-                'TYPE' => 'json'
-                )
-        );
-
-        $opts = array('http' =>
-            array(
-                'method'  => 'POST',
-                'header'  => 'Content-type: application/x-www-form-urlencoded',
-                'content' => $post_data
-            )
-        );
-
-        $parametr_string = stream_context_create($opts);
-
-        $subdomain='clevertoys';
-
-        $link='https://'.$subdomain.'.amocrm.ru/private/api/auth.php?type=json';
-
-
-        $result = file_get_contents($link, false, $parametr_string);
-
-        echo $result;
-
-        $Response=json_decode($result,true);
-        $Response=$Response['response'];
-        if(isset($Response['auth']))  {
-            echo "OK!!!";
-        } else {
-            echo "BAD :(";
-        }
-
-        return $result;
-  */
        $user=array(
             'USER_LOGIN'=>'vladimirkh.it@gmail.com',
-            'USER_HASH'=>'e6598fa2f194c9ce76519b9b94893f91f2816489'
+            'USER_HASH'=> getAPIk(),
         );
         $subdomain='clevertoys';
 
@@ -48,7 +12,7 @@ function ConnectToAMO() {
         $curl=curl_init(); #Сохраняем дескриптор сеанса cURL
 
         curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-API-client/1.0');
+        curl_setopt($curl,CURLOPT_USERAGENT,'amoCRM-API-client-undefined/2.0');
         curl_setopt($curl,CURLOPT_URL,$link);
         curl_setopt($curl,CURLOPT_CUSTOMREQUEST,'POST');
         curl_setopt($curl,CURLOPT_POSTFIELDS,json_encode($user));
@@ -60,7 +24,7 @@ function ConnectToAMO() {
         curl_setopt($curl,CURLOPT_SSL_VERIFYHOST,0);
         $out=curl_exec($curl);
         $code=curl_getinfo($curl,CURLINFO_HTTP_CODE); #Получим HTTP-код ответа сервера
-    #    curl_close($curl); #Завершаем сеанс cURL - надо ли завершать?
+        curl_close($curl); #Завершаем сеанс cURL
 
         $code=(int)$code;
         $errors=array(
@@ -87,17 +51,15 @@ function ConnectToAMO() {
         $Response=json_decode($out,true);
         $Response=$Response['response'];
         if(isset($Response['auth']))  {
-            $result = $curl;
-            echo "OK!!!";
+            return true;
         } else {
-            $result = false;
-            echo "BAD :(";
+            $Response['user_data'] = $_REQUEST;
+            $f = fopen("err.txt","at") or die("Что-то пошло не так!!!");
+            flock($f, LOCK_EX);
+            fwrite ($f, $Response);
+            flock($f, LOCK_UN);
+            fclose($f);
+            return false;
         }
-
-        return $result;
-
-}
-
-function logDataAndProblems() {
 
 }
