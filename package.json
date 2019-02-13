@@ -1,0 +1,26 @@
+{
+  "name": "zodiac_and_learn_webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "require": "^2.4.20",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "test": "'echo \\'no test specified\\' %% exit 1'"
+  },
+  "repository": "git+https://github.com/VladimirLHk/alarmCRM.git",
+  "keywords": [
+    "webpack"
+  ],
+  "author": "vladimir khomutov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladimirLHk/alarmCRM/issues"
+  },
+  "homepage": "https://github.com/VladimirLHk/alarmCRM#readme"
+}
