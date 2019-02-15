@@ -7,5 +7,3 @@ validateForm();
 
 let inputOnFocuse = require('./onFocus');
 inputOnFocuse();
-
-//    "build": "webpack --config webpack.config.js"

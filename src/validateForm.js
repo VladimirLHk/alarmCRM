@@ -1,3 +1,4 @@
+let $ = require('jquery');
 module.exports = function validateForm () {
     $(function(){
         $("[type='submit']").click(function(){

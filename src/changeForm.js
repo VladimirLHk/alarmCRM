@@ -1,3 +1,4 @@
+let $ = require('jquery');
 module.exports = function changeForm () {
     $(function(){
         $("[name='CVF[1677]'],[name='CVF[1234]']").each(function(index, input){

@@ -66,28 +66,32 @@ button {
 
 
 }
-.awesome_input {
-    line-height: 14px;
-    margin: auto;
-    padding: 10px 15px;
-    outline: none;
-    border: 1;
+@mixin border-radius($radius)
+    -webkit-border-radius: $radius
+    -moz-border-radius:    $radius
+    border-radius:         $radius
 
+@mixin transition ($time)
+    -webkit-transition: all $time ease-in-out
+    -moz-transition:    all $time ease-in-out
+    -o-transition:      all $time ease-in-out
+    transition:         all $time ease-in-out
 
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    text-shadow: 0px 1px 1px rgba(255,255,255, .2);
+.awesome_input
+    line-height: 14px
+    margin: auto
+    padding: 10px 15px
+    outline: none
+    border: solid
 
-    -webkit-border-radius: 26px;
-    -moz-border-radius: 26px;
-    border-radius: 26px;
+    font-family: Arial, sans-serif
+    font-size: 12px
+    font-weight: bold
+    text-shadow: 0 1px 1px rgba(255,255,255, .2)
 
-    -webkit-transition: all .15s ease-in-out;
-    -moz-transition: all .15s ease-in-out;
-    -o-transition: all .15s ease-in-out;
-    transition: all .15s ease-in-out;
-}.not_error {
+    +border-radius(26px)
+    +transition(.15s)
+.not_error {
     border-color: #c7c7c7;
 }
 
