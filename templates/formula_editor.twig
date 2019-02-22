@@ -1,0 +1,12 @@
+<div>
+  <button id="add_button">Добавить формулу</button> <br>
+
+  {% if params %}
+    <ul>
+      {% for item in params %}
+        <li>{{ item.result }} = {{ item.formula }} <span id={{ item.spanId }} class={{ spanClass }}>х</span></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+</div>
