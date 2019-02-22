@@ -5,7 +5,7 @@
         "short_description": "widget.short_description",
         "code": "list_field_calculator",
         "secret_key": "5f1ad025a40d8e20e44499a1da5623249e2edd69cfbb24ad67a3f85c7dae4db8",
-        "version": "1.0.86",
+        "version": "1.0.112",
         "interface_version": 2,
         "init_once": false,
         "locale":[

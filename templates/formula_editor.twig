@@ -1,5 +1,4 @@
 <div>
-  <button id="add_button">Добавить формулу</button> <br>
 
   {% if params %}
     <ul>
@@ -8,5 +7,20 @@
       {% endfor %}
     </ul>
   {% endif %}
+    <br>
+    <p>{{ textAboutAddFormula }}</p>
+    {% if not textAboutAddFormula %}
+        <div>
+            <select id="formulaResult" style="display:inline-block;vertical-align:middle">
+                {% for key, item in calcFeilds %}
+                    <option id={{ key }}>{{ item }}</option>
+                {% endfor %}
+            </select> &emsp;=&emsp;
+            <textarea  style="display:inline-block; vertical-align:middle" id="formulaString" placeholder="Введите формулу" rows="2" cols="100"></textarea>
+
+        </div>
+        <br>
+        <button id="add_button">Добавить формулу</button> <br>
+    {% endif %}
 
 </div>
