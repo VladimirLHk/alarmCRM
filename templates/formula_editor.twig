@@ -1,9 +1,15 @@
 <div>
-
   {% if params %}
     <ul>
       {% for item in params %}
-        <li>{{ item.result }} = {{ item.formula }} <span id={{ item.spanId }} class={{ spanClass }}>х</span></li>
+        <li>{{ item.result }} = {{ item.formula }} <span id={{ item.spanId }} class={{ spanClass }} style="color: yellow; background: red">х</span></li>
+        <div id={{"p"~item.spanId}} hidden="" >
+            <p style="color: red">Вы действительно хотите удалить формулу?</p>
+                <button class="delete">Удалить</button>&emsp;&emsp;&emsp;
+                <button class="not_delete">Отменить</button>
+
+        </div>
+
       {% endfor %}
     </ul>
   {% endif %}
@@ -11,16 +17,24 @@
     <p>{{ textAboutAddFormula }}</p>
     {% if not textAboutAddFormula %}
         <div>
-            <select id="formulaResult" style="display:inline-block;vertical-align:middle">
-                {% for key, item in calcFeilds %}
-                    <option id={{ key }}>{{ item }}</option>
-                {% endfor %}
-            </select> &emsp;=&emsp;
-            <textarea  style="display:inline-block; vertical-align:middle" id="formulaString" placeholder="Введите формулу" rows="2" cols="100"></textarea>
-
+            <div id="new_button">
+                <span style="font-size:3ch"><b>+</b></span>&emsp;Нажмите, чтобы добавить формулу
+            </div>
+            <div id="formula_block" hidden="">
+                <div id="instruction" style="width:600px"><p style="color:blue">{{ instruction }}</p></div>
+                <select id="formulaResult" style="display:inline-block;vertical-align:middle">
+                    {% for key, item in calcFeilds %}
+                        <option id={{ key }}>{{ item }}</option>
+                    {% endfor %}
+                </select> &emsp;=&emsp;
+                <textarea  style="display:inline-block; vertical-align:middle" id="formulaString" placeholder="Введите формулу" rows="2" cols="100"></textarea>
+                <p id="errorMsg" style="color: red"></p>
+                <div>
+                    <button id="add_button">Сохранить</button>&emsp;&emsp;&emsp; <button id="not_add_button">Отменить</button>
+                </div>
+            </div>
         </div>
         <br>
-        <button id="add_button">Добавить формулу</button> <br>
     {% endif %}
 
 </div>
