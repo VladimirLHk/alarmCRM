@@ -1,0 +1,26 @@
+{
+  "widget": {
+    "name": "car_parsing",
+    "description": "widget.description",
+    "short_description": "widget.short_description",
+    "code": "car_parsing",
+    "secret_key": "90f66a042f8caa37322af2adc16d767adc8b767c4089eb64295723262255efd5",
+    "version": "1.0.2",
+    "interface_version": 2,
+    "init_once": true,
+    "locale": [
+      "ru"
+    ],
+    "installation": true
+  },
+  "locations": [
+    "everywhere"
+  ],
+  "settings": {
+    "users":{
+      "name": "settings.users",
+      "type": "users",
+      "required": true
+    }
+  }
+}
